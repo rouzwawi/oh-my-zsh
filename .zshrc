@@ -1,0 +1,68 @@
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="rouz"
+
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
+
+# Comment this out to disable weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
+
+# Uncomment following line if you want to disable autosetting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git)
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+source $ZSH/oh-my-zsh.sh
+
+# Customize to your needs...
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+
+export NODE_HOME=/opt/node
+export NODE_PATH=$NODE_HOME/lib/node_modules
+
+export PATH=$NODE_HOME/bin:$PATH
+
+source ~/code/resty/resty
+
+# aliases
+alias l='ls -l'
+alias la='ls -la'
+alias lh='ls -lh'
+alias ..='cd ..'
+alias pp='python -mjson.tool'
+
+# git aliases
+alias g='git'
+alias gc='git commit'
+alias gs='git status'
+alias ga='git add'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gf='git fetch'
+alias gl='git lg'
+alias gla='git lga'
+alias gfp='git fetch --prune'
+alias gp='git pull --rebase'
