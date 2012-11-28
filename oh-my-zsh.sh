@@ -81,3 +81,5 @@ else
     fi
   fi
 fi
+
+unsetopt correct_all
