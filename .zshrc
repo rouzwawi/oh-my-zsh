@@ -56,19 +56,12 @@ export PATH=~/bin:$PATH
 export WORKON_HOME=~/.envs
 source /usr/local/bin/virtualenvwrapper.sh
 
-source ~/code/resty/resty
-
-export DOCKER_HOST=tcp://192.168.59.103:2375
-#export DOCKER_CERT_PATH=/Users/rouz/.boot2docker/certs/boot2docker-vm
-#export DOCKER_TLS_VERIFY=1
 
 # aliases
 alias l='ls -l'
 alias la='ls -la'
 alias lh='ls -lh'
 alias ..='cd ..'
-alias pp='jq .'
-alias sb='subl -n'
 
 alias gowork='export GOPATH=`pwd`'
 
@@ -107,10 +100,5 @@ function gheclone {
 }
 
 alias spmvn='mvn -s ~/.m2/spotify.xml'
-
-# fun
-alias skont='say shoun; sleep 0.7; say ttte'
-alias smejka='say vill doo smayca litee\?'
-
 
 alias wat='cat ~/var/me.todo'
