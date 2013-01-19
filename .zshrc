@@ -39,16 +39,12 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-
 export GOPATH=~/.gocode
 
-export NODE_HOME=/usr/local/Cellar/node/0.10.30
-
+export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
 export ARD_TOOLS=/Applications/Arduino.app/Contents/Resources/Java/hardware/tools
 
-export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
-
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 export PATH=/usr/texbin:$PATH
 export PATH=$GOPATH/bin:$PATH
 export PATH=~/bin:$PATH
