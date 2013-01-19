@@ -38,12 +38,16 @@ export LANG=en_US.UTF-8
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 
 export NODE_HOME=/opt/node
 export NODE_PATH=$NODE_HOME/lib/node_modules
 
+export ARD_TOOLS=/Applications/Arduino.app/Contents/Resources/Java/hardware/tools
+
 export PATH=$NODE_HOME/bin:$PATH
+
+export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
 
 source ~/code/resty/resty
 
@@ -53,6 +57,7 @@ alias la='ls -la'
 alias lh='ls -lh'
 alias ..='cd ..'
 alias pp='python -mjson.tool'
+alias sb='subl -n .'
 
 # git aliases
 alias g='git'
