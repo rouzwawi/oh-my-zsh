@@ -66,8 +66,13 @@ alias gs='git status'
 alias ga='git add'
 alias gd='git diff'
 alias gdc='git diff --cached'
+alias gdh='git diff HEAD^'
 alias gf='git fetch'
 alias gl='git log --graph --oneline --parents --decorate=short'
 alias gla='git log --graph --oneline --parents --decorate=short --all'
-alias gfp='git fetch --prune'
+alias glp='git log --graph --oneline --parents --decorate=short -p'
 alias gp='git pull --rebase'
+
+# git functions
+function gpr()  { git fetch origin refs/pull/$1/head  && git checkout FETCH_HEAD }
+function gprm() { git fetch origin refs/pull/$1/merge && git checkout FETCH_HEAD }
