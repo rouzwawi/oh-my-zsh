@@ -40,6 +40,8 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 
+export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+
 export NODE_HOME=/usr/local/Cellar/node/0.8.20
 export NPM_HOME=/usr/local/share/npm
 
@@ -56,7 +58,7 @@ alias l='ls -l'
 alias la='ls -la'
 alias lh='ls -lh'
 alias ..='cd ..'
-alias pp='python -mjson.tool'
+alias pp='jq .'
 alias sb='subl -n .'
 
 # git aliases
