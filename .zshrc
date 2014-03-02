@@ -78,3 +78,10 @@ alias gp='git pull --rebase'
 # git functions
 function gpr()  { git fetch origin refs/pull/$1/head  && git checkout FETCH_HEAD }
 function gprm() { git fetch origin refs/pull/$1/merge && git checkout FETCH_HEAD }
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# fun
+alias skont='say shoun; sleep 0.7; say ttte'
+alias smejka='say vill doo smayca litee\?'
