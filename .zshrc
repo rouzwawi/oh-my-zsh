@@ -99,3 +99,5 @@ function gheclone {
 alias spmvn='mvn -s ~/.m2/spotify.xml'
 
 alias wat='cat ~/var/me.todo'
+
+wat
