@@ -59,7 +59,7 @@ alias la='ls -la'
 alias lh='ls -lh'
 alias ..='cd ..'
 alias pp='jq .'
-alias sb='subl -n .'
+alias sb='subl -n'
 
 # git aliases
 alias g='git'
@@ -85,3 +85,8 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # fun
 alias skont='say shoun; sleep 0.7; say ttte'
 alias smejka='say vill doo smayca litee\?'
+
+
+
+head -30 ~/var/me.todo
+echo
