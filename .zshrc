@@ -40,12 +40,14 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 
-export NODE_HOME=/opt/node
-export NODE_PATH=$NODE_HOME/lib/node_modules
+export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+
+export NODE_HOME=/usr/local/Cellar/node/0.8.20
+export NPM_HOME=/usr/local/share/npm
 
 export ARD_TOOLS=/Applications/Arduino.app/Contents/Resources/Java/hardware/tools
 
-export PATH=$NODE_HOME/bin:$PATH
+export PATH=$PATH:$NODE_HOME/bin:$NPM_HOME/bin
 
 export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
 
@@ -56,8 +58,8 @@ alias l='ls -l'
 alias la='ls -la'
 alias lh='ls -lh'
 alias ..='cd ..'
-alias pp='python -mjson.tool'
-alias sb='subl -n .'
+alias pp='jq .'
+alias sb='subl -n'
 
 # git aliases
 alias g='git'
@@ -76,3 +78,15 @@ alias gp='git pull --rebase'
 # git functions
 function gpr()  { git fetch origin refs/pull/$1/head  && git checkout FETCH_HEAD }
 function gprm() { git fetch origin refs/pull/$1/merge && git checkout FETCH_HEAD }
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# fun
+alias skont='say shoun; sleep 0.7; say ttte'
+alias smejka='say vill doo smayca litee\?'
+
+
+
+head -30 ~/var/me.todo
+echo
