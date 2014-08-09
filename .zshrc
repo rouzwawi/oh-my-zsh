@@ -38,18 +38,22 @@ export LANG=en_US.UTF-8
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
-export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+export GOPATH=~/.gocode
 
-export NODE_HOME=/usr/local/Cellar/node/0.8.20
-export NPM_HOME=/usr/local/share/npm
+export NODE_HOME=/usr/local/Cellar/node/0.10.30
 
 export ARD_TOOLS=/Applications/Arduino.app/Contents/Resources/Java/hardware/tools
 
-export PATH=$PATH:$NODE_HOME/bin:$NPM_HOME/bin
-
 export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
+
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+export PATH=$GOPATH/bin:$PATH
+export PATH=~/bin:$PATH
+
+export WORKON_HOME=~/.envs
+source /usr/local/bin/virtualenvwrapper.sh
 
 source ~/code/resty/resty
 
@@ -79,14 +83,9 @@ alias gp='git pull --rebase'
 function gpr()  { git fetch origin refs/pull/$1/head  && git checkout FETCH_HEAD }
 function gprm() { git fetch origin refs/pull/$1/merge && git checkout FETCH_HEAD }
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 # fun
 alias skont='say shoun; sleep 0.7; say ttte'
 alias smejka='say vill doo smayca litee\?'
 
 
-
-head -30 ~/var/me.todo
-echo
+alias wat='cat ~/var/me.todo'
