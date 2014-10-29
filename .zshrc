@@ -49,8 +49,11 @@ export ARD_TOOLS=/Applications/Arduino.app/Contents/Resources/Java/hardware/tool
 export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
 
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+export PATH=/usr/texbin:$PATH
 export PATH=$GOPATH/bin:$PATH
 export PATH=~/bin:$PATH
+
+export DOCKER_HOST=tcp://192.168.59.103:2375
 
 export WORKON_HOME=~/.envs
 source /usr/local/bin/virtualenvwrapper.sh
@@ -65,6 +68,8 @@ alias ..='cd ..'
 alias pp='jq .'
 alias sb='subl -n'
 
+alias gowork='export GOPATH=`pwd`'
+
 # git aliases
 alias g='git'
 alias gc='git commit'
@@ -78,10 +83,26 @@ alias gl='git log --graph --oneline --parents --decorate=short'
 alias gla='git log --graph --oneline --parents --decorate=short --all'
 alias glp='git log --graph --oneline --parents --decorate=short -p'
 alias gp='git pull --rebase'
+alias gmum='git merge upstream/master'
+alias gfu='git fetch upstream'
 
 # git functions
 function gpr()  { git fetch origin refs/pull/$1/head  && git checkout FETCH_HEAD }
 function gprm() { git fetch origin refs/pull/$1/merge && git checkout FETCH_HEAD }
+
+function ghclone {
+  git clone git@github.com:rouzwawi/$1.git
+  cd $1
+  git remote add upstream git@github.com:$2/$1.git
+  git fetch upstream
+}
+
+function gheclone {
+  git clone git@ghe.spotify.net:rouz/$1.git
+  cd $1
+  git remote add upstream git@ghe.spotify.net:$2/$1.git
+  git fetch upstream
+}
 
 # fun
 alias skont='say shoun; sleep 0.7; say ttte'
