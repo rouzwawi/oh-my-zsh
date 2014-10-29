@@ -1,4 +1,4 @@
-PROMPT='%{$fg[blue]%}☁ %{$fg[green]%}%p %{$fg[green]%}%c %{$fg[blue]%}➜  % %{$reset_color%}'
+PROMPT='%{$fg[white]%}%n%{$fg[blue]%}@%m %{$fg[green]%}%c/ %{$fg[blue]%}$ % %{$reset_color%}'
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[blue]%}[%{$fg[cyan]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
