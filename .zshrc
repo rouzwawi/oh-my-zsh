@@ -53,12 +53,14 @@ export PATH=/usr/texbin:$PATH
 export PATH=$GOPATH/bin:$PATH
 export PATH=~/bin:$PATH
 
-export DOCKER_HOST=tcp://192.168.59.103:2375
-
 export WORKON_HOME=~/.envs
 source /usr/local/bin/virtualenvwrapper.sh
 
 source ~/code/resty/resty
+
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/rouz/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
 
 # aliases
 alias l='ls -l'
