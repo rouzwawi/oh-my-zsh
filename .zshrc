@@ -38,20 +38,45 @@ export LANG=en_US.UTF-8
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+export PATH=~/bin:$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/share/python
 
-export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
-export NODE_HOME=/usr/local/Cellar/node/0.8.20
-export NPM_HOME=/usr/local/share/npm
+export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
+export HELIOS_MASTER="http://192.168.33.10:5801"
 
-export ARD_TOOLS=/Applications/Arduino.app/Contents/Resources/Java/hardware/tools
+export NODE_HOME=/usr/local/share/npm
+export NODE_PATH=$NODE_HOME/lib/node_modules
 
 export PATH=$PATH:$NODE_HOME/bin:$NPM_HOME/bin
+export PATH=~/Library/Haskell/bin:$PATH
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
 
-source ~/code/resty/resty
+export PYTHONPATH="/Users/rouz/code/spotify-common"
+export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/build"
+export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/log-parser"
+export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/luigi"
+export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/hermes-python"
+export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/hermes-proxy"
+export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/statistics/python"
+export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/dnspython"
+export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/remote-control"
+export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/pubsub"
+export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/boink/python"
+
+function venv() {
+    source ~/code/envs/$1/bin/activate
+}
+
+function yq() {
+    file=$1 && shift
+    js-yaml $file | jq "$@"
+}
+
+# source ~/code/resty/resty
+# source ~/code/nesty/nesty
 
 # aliases
 alias l='ls -l'
@@ -61,6 +86,9 @@ alias ..='cd ..'
 alias pp='jq .'
 alias sb='subl -n'
 
+# local builds
+alias vessel='java -jar /Users/rouz/code/vessel/cli/target/vessel-cli-0.1.0-SNAPSHOT-jar-with-dependencies.jar'
+
 # git aliases
 alias g='git'
 alias gc='git commit'
@@ -68,12 +96,13 @@ alias gs='git status'
 alias ga='git add'
 alias gd='git diff'
 alias gdc='git diff --cached'
-alias gdh='git diff HEAD^'
+alias gdh='git diff "HEAD^"'
 alias gf='git fetch'
 alias gl='git log --graph --oneline --parents --decorate=short'
 alias gla='git log --graph --oneline --parents --decorate=short --all'
 alias glp='git log --graph --oneline --parents --decorate=short -p'
 alias gp='git pull --rebase'
+alias gcontrib='git log | grep Auth | sort | uniq -c | sort'
 
 # git functions
 function gpr()  { git fetch origin refs/pull/$1/head  && git checkout FETCH_HEAD }
@@ -87,6 +116,5 @@ alias skont='say shoun; sleep 0.7; say ttte'
 alias smejka='say vill doo smayca litee\?'
 
 
-
-head -30 ~/var/me.todo
-echo
+alias wat='head -30 ~/var/me.todo; echo'
+wat
