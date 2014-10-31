@@ -42,9 +42,6 @@ export PATH=~/bin:$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
-export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
-export HELIOS_MASTER="http://192.168.33.10:5801"
-
 export NODE_HOME=/usr/local/share/npm
 export NODE_PATH=$NODE_HOME/lib/node_modules
 
@@ -75,6 +72,9 @@ function yq() {
     js-yaml $file | jq "$@"
 }
 
+export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
+export HELIOS_MASTER="http://192.168.33.10:5801"
+
 # aliases
 alias l='ls -l'
 alias la='ls -la'
@@ -100,6 +100,8 @@ alias gla='git log --graph --oneline --parents --decorate=short --all'
 alias glp='git log --graph --oneline --parents --decorate=short -p'
 alias gp='git pull --rebase'
 alias gcontrib='git log | grep Auth | sort | uniq -c | sort'
+alias gmum='git merge upstream/master'
+alias gfu='git fetch upstream'
 
 # git functions
 function gpr()  { git fetch origin refs/pull/$1/head  && git checkout FETCH_HEAD }
@@ -107,6 +109,20 @@ function gprm() { git fetch origin refs/pull/$1/merge && git checkout FETCH_HEAD
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+function ghclone {
+  git clone git@github.com:rouzwawi/$1.git
+  cd $1
+  git remote add upstream git@github.com:$2/$1.git
+  git fetch upstream
+}
+
+function gheclone {
+  git clone git@ghe.spotify.net:rouz/$1.git
+  cd $1
+  git remote add upstream git@ghe.spotify.net:$2/$1.git
+  git fetch upstream
+}
 
 # fun
 alias skont='say shoun; sleep 0.7; say ttte'
