@@ -75,9 +75,6 @@ function yq() {
     js-yaml $file | jq "$@"
 }
 
-# source ~/code/resty/resty
-# source ~/code/nesty/nesty
-
 # aliases
 alias l='ls -l'
 alias la='ls -la'
@@ -117,4 +114,3 @@ alias smejka='say vill doo smayca litee\?'
 
 
 alias wat='head -30 ~/var/me.todo; echo'
-wat
