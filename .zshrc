@@ -45,6 +45,7 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export NODE_HOME=/usr/local/share/npm
 export NODE_PATH=$NODE_HOME/lib/node_modules
 
+export PATH=$PATH:/Users/rouz/google-cloud-sdk/bin
 export PATH=$PATH:$NODE_HOME/bin:$NPM_HOME/bin
 export PATH=~/Library/Haskell/bin:$PATH
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
@@ -72,7 +73,7 @@ function yq() {
     js-yaml $file | jq "$@"
 }
 
-export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2375
+$(boot2docker shellinit 2> /dev/null)
 export HELIOS_MASTER="http://192.168.33.10:5801"
 
 # aliases
@@ -115,6 +116,8 @@ function ghclone {
   cd $1
   git remote add upstream git@github.com:$2/$1.git
   git fetch upstream
+  git config user.name "Rouzbeh Delavari"
+  git config user.email "rouzwawi@gmail.com"
 }
 
 function gheclone {
