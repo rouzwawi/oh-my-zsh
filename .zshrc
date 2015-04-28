@@ -81,6 +81,7 @@ alias gfu='git fetch upstream'
 # git functions
 function gpr()  { git fetch origin refs/pull/$1/head  && git checkout FETCH_HEAD }
 function gprm() { git fetch origin refs/pull/$1/merge && git checkout FETCH_HEAD }
+function gsp() { git config user.name "Rouzbeh Delavari" && git config user.email "rouz@spotify.com" }
 
 function ghclone {
   git clone git@github.com:rouzwawi/$1.git
@@ -94,6 +95,7 @@ function gheclone {
   cd $1
   git remote add upstream git@ghe.spotify.net:$2/$1.git
   git fetch upstream
+  gsp
 }
 
 alias spmvn='mvn -s ~/.m2/spotify.xml'
