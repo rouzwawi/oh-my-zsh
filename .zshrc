@@ -74,7 +74,7 @@ function yq() {
 }
 
 $(boot2docker shellinit 2> /dev/null)
-export HELIOS_MASTER="http://192.168.33.10:5801"
+$(helios-env 2> /dev/null)
 
 # aliases
 alias l='ls -l'
