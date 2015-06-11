@@ -51,6 +51,9 @@ export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
 
 source ~/code/resty/resty
 
+$(boot2docker shellinit 2> /dev/null)
+$(helios-env 2> /dev/null)
+
 # aliases
 alias l='ls -l'
 alias la='ls -la'
