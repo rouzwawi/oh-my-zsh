@@ -105,4 +105,5 @@ function mcp { mvn dependency:copy -Dartifact=$1 -DoutputDirectory=. }
 
 alias wat='cat ~/var/me.todo'
 
+eval "$(docker-machine env default)"
 wat
