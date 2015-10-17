@@ -77,7 +77,7 @@ alias gl='git log --graph --oneline --parents --decorate=short'
 alias gla='git log --graph --oneline --parents --decorate=short --all'
 alias glp='git log --graph --oneline --parents --decorate=short -p'
 alias gp='git pull --rebase'
-alias gmum='git merge upstream/master'
+alias gmum='git merge --ff-only upstream/master'
 alias gfu='git fetch upstream'
 
 # git functions
