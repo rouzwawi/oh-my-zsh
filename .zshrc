@@ -40,7 +40,7 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
-export RUST_SRC_PATH=/usr/local/Cellar/rust/1.2.0/src
+export RUST_SRC_PATH=/usr/local/Cellar/rust/1.10.0/src
 export GOPATH=~/.gocode
 
 export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
