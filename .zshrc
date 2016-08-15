@@ -41,13 +41,14 @@ source $ZSH/oh-my-zsh.sh
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 export RUST_SRC_PATH=/usr/local/Cellar/rust/1.10.0/src
+export CARGO_HOME=~/.cargo
 export GOPATH=~/.gocode
 
 export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
 export ARD_TOOLS=/Applications/Arduino.app/Contents/Resources/Java/hardware/tools
 
-export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
-export PATH=/usr/texbin:$PATH
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+export PATH=$CARGO_HOME/bin:$PATH
 export PATH=$GOPATH/bin:$PATH
 export PATH=~/bin:$PATH
 
