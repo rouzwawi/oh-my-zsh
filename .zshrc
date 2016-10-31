@@ -67,6 +67,8 @@ alias gowork='export GOPATH=`pwd`'
 # git aliases
 alias g='git'
 alias gc='git commit'
+alias gca='git commit --amend'
+alias gcan='git commit --amend --no-edit'
 alias gs='git status'
 alias ga='git add'
 alias gd='git diff'
