@@ -38,7 +38,7 @@ export LANG=en_US.UTF-8
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export JAVA_HOME=`/usr/libexec/java_home -v 9`
 
 export RUST_SRC_PATH=/usr/local/Cellar/rust/1.10.0/src
 export CARGO_HOME=~/.cargo
@@ -52,8 +52,8 @@ export PATH=$CARGO_HOME/bin:$PATH
 export PATH=$GOPATH/bin:$PATH
 export PATH=~/bin:$PATH
 
-export WORKON_HOME=~/.envs
-source /usr/local/bin/virtualenvwrapper.sh
+#export WORKON_HOME=~/.envs
+#source /usr/local/bin/virtualenvwrapper.sh
 
 
 # aliases
@@ -106,7 +106,4 @@ function gheclone {
 alias spmvn='mvn -s ~/.m2/spotify.xml'
 function mcp { mvn dependency:copy -Dartifact=$1 -DoutputDirectory=. }
 
-alias wat='cat ~/var/me.todo'
-
-eval "$(docker-machine env default)"
-wat
+#eval "$(docker-machine env default)"
