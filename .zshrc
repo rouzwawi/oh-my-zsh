@@ -41,28 +41,19 @@ source $ZSH/oh-my-zsh.sh
 export PATH=~/bin:$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/share/python
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export ANDROID_HOME=/Users/rouz/.vulcan/cache/android-sdk-r25.1.7-spotify5-macosx.zip-ef7b29fac9c7195ba2c0d3e9e8e4651091150d03/extracted/sdk
 
 export NODE_HOME=/usr/local/share/npm
 export NODE_PATH=$NODE_HOME/lib/node_modules
 
+export RUST_SRC_PATH=/usr/local/src/rust/src
+export RUST_HOME=/Users/rouz/.cargo/bin
+
 export PATH=$PATH:/Users/rouz/google-cloud-sdk/bin
-export PATH=$PATH:$NODE_HOME/bin:$NPM_HOME/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$RUST_HOME:$PATH
 export PATH=~/Library/Haskell/bin:$PATH
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
-
-export PYTHONPATH="/Users/rouz/code/spotify-common"
-export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/build"
-export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/log-parser"
-export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/luigi"
-export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/hermes-python"
-export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/hermes-proxy"
-export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/statistics/python"
-export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/dnspython"
-export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/remote-control"
-export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/pubsub"
-export PYTHONPATH="$PYTHONPATH:/Users/rouz/code/boink/python"
 
 function venv() {
     source ~/code/envs/$1/bin/activate
@@ -73,8 +64,9 @@ function yq() {
     js-yaml $file | jq "$@"
 }
 
-$(boot2docker shellinit 2> /dev/null)
-$(helios-env 2> /dev/null)
+. /usr/local/etc/profile.d/z.sh
+eval "$(docker-machine env dev)"
+eval "$(helios-env 2> /dev/null)"
 
 # aliases
 alias l='ls -l'
@@ -83,11 +75,13 @@ alias lh='ls -lh'
 alias ..='cd ..'
 alias pp='jq .'
 alias sb='subl -n'
+alias spm='npm -reg http://npm-registry.spotify.net'
 
 # local builds
 alias vessel='java -jar /Users/rouz/code/vessel/cli/target/vessel-cli-0.1.0-SNAPSHOT-jar-with-dependencies.jar'
 
 # git aliases
+export GIT_FORMAT='%C(auto)%h %Cblue[%an]%Creset%C(auto)%d %s'
 alias g='git'
 alias gc='git commit'
 alias gs='git status'
@@ -96,9 +90,9 @@ alias gd='git diff'
 alias gdc='git diff --cached'
 alias gdh='git diff "HEAD^"'
 alias gf='git fetch'
-alias gl='git log --graph --oneline --parents --decorate=short'
-alias gla='git log --graph --oneline --parents --decorate=short --all'
-alias glp='git log --graph --oneline --parents --decorate=short -p'
+alias gl='git log --graph --pretty=format:"$GIT_FORMAT"'
+alias gla='git log --graph --pretty=format:"$GIT_FORMAT" --all'
+alias glp='git log --graph --pretty=format:"$GIT_FORMAT" -p'
 alias gp='git pull --rebase'
 alias gcontrib='git log | grep Auth | sort | uniq -c | sort'
 alias gmum='git merge --ff-only upstream/master'
@@ -108,6 +102,9 @@ alias gsyn='gfu && gmum'
 # git functions
 function gpr()  { git fetch origin refs/pull/$1/head  && git checkout FETCH_HEAD }
 function gprm() { git fetch origin refs/pull/$1/merge && git checkout FETCH_HEAD }
+
+# Maven with open source settings
+alias mvno='mvn -s ~/.m2/settings-open.xml'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -128,9 +125,18 @@ function gheclone {
   git fetch upstream
 }
 
+# Add ssh keys to agent
+ssh-add -A
+
 # fun
 alias skont='say shoun; sleep 0.7; say ttte'
 alias smejka='say vill doo smayca litee\?'
 
 
 alias wat='head -30 ~/var/me.todo; echo'
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/rouz/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/Users/rouz/google-cloud-sdk/completion.zsh.inc'
