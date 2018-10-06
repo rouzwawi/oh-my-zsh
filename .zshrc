@@ -46,14 +46,22 @@ export ANDROID_HOME=/Users/rouz/.vulcan/cache/android-sdk-r25.1.7-spotify5-macos
 export NODE_HOME=/usr/local/share/npm
 export NODE_PATH=$NODE_HOME/lib/node_modules
 
+export PUB_HOSTED_URL="https://git.soundtrap.com:8100"
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
 export RUST_SRC_PATH=/usr/local/src/rust/src
 export RUST_HOME=/Users/rouz/.cargo/bin
 
+export GOPATH=~/go
+
 export PATH=$PATH:/Users/rouz/google-cloud-sdk/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$GOPATH/bin:$PATH
 export PATH=$RUST_HOME:$PATH
 export PATH=~/Library/Haskell/bin:$PATH
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH="$PATH":"~/.pub-cache/bin"
 
 function venv() {
     source ~/code/envs/$1/bin/activate
@@ -65,8 +73,6 @@ function yq() {
 }
 
 . /usr/local/etc/profile.d/z.sh
-eval "$(docker-machine env dev)"
-eval "$(helios-env 2> /dev/null)"
 
 # aliases
 alias l='ls -l'
@@ -140,3 +146,5 @@ source '/Users/rouz/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables shell command completion for gcloud.
 source '/Users/rouz/google-cloud-sdk/completion.zsh.inc'
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
