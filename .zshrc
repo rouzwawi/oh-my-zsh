@@ -38,7 +38,7 @@ export LANG=en_US.UTF-8
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=~/bin:$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/share/python
+export PATH=~/bin:$PATH:/usr/local/opt/python/libexec/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
 
 function swjava {
   export JAVA_HOME=`/usr/libexec/java_home -v $1`
@@ -98,9 +98,6 @@ alias gsyn='gfu && gmum'
 function gpr()  { git fetch origin refs/pull/$1/head  && git checkout FETCH_HEAD }
 function gprm() { git fetch origin refs/pull/$1/merge && git checkout FETCH_HEAD }
 
-# Maven with open source settings
-alias mvno='mvn -s ~/.m2/settings-open.xml'
-
 # activate venv
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
@@ -114,14 +111,11 @@ function burk {
   [[ ! -z "$host" ]] && ssh -A "$host.spotify.net"
 }
 
-
 # fun
 alias skont='say shoun; sleep 0.7; say ttte'
 alias smejka='say vill doo smayca litee\?'
 
-
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/rouz/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/rouz/Downloads/google-cloud-sdk/path.zsh.inc'; fi
