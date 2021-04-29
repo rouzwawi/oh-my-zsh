@@ -40,13 +40,14 @@ source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
 export PATH=~/bin:$PATH:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/share/python
 
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-export ANDROID_HOME=/Users/rouz/.vulcan/cache/android-sdk-r25.1.7-spotify5-macosx.zip-ef7b29fac9c7195ba2c0d3e9e8e4651091150d03/extracted/sdk
+function swjava {
+  export JAVA_HOME=`/usr/libexec/java_home -v $1`
+}
+swjava 11
 
 export NODE_HOME=/usr/local/share/npm
 export NODE_PATH=$NODE_HOME/lib/node_modules
 
-export PUB_HOSTED_URL="https://git.soundtrap.com:8100"
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
 
@@ -55,24 +56,16 @@ export RUST_HOME=/Users/rouz/.cargo/bin
 
 export GOPATH=~/go
 
-export PATH=$PATH:/Users/rouz/google-cloud-sdk/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$GOPATH/bin:$PATH
 export PATH=$RUST_HOME:$PATH
 export PATH=~/Library/Haskell/bin:$PATH
 export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export PATH="$PATH":"~/.pub-cache/bin"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="$PATH":"$HOME/Library/Python/3.7/bin"
 
 function venv() {
-    source ~/code/envs/$1/bin/activate
+    source $1/bin/activate
 }
-
-function yq() {
-    file=$1 && shift
-    js-yaml $file | jq "$@"
-}
-
-. /usr/local/etc/profile.d/z.sh
 
 # aliases
 alias l='ls -l'
@@ -80,16 +73,12 @@ alias la='ls -la'
 alias lh='ls -lh'
 alias ..='cd ..'
 alias pp='jq .'
-alias sb='subl -n'
 alias spm='npm -reg http://npm-registry.spotify.net'
-
-# local builds
-alias vessel='java -jar /Users/rouz/code/vessel/cli/target/vessel-cli-0.1.0-SNAPSHOT-jar-with-dependencies.jar'
 
 # git aliases
 export GIT_FORMAT='%C(auto)%h %Cblue[%an]%Creset%C(auto)%d %s'
 alias g='git'
-alias gc='git commit'
+alias gc='git commit -S'
 alias gs='git status'
 alias ga='git add'
 alias gd='git diff'
@@ -112,39 +101,30 @@ function gprm() { git fetch origin refs/pull/$1/merge && git checkout FETCH_HEAD
 # Maven with open source settings
 alias mvno='mvn -s ~/.m2/settings-open.xml'
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+# activate venv
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
-function ghclone {
-  git clone git@github.com:rouzwawi/$1.git
-  cd $1
-  git remote add upstream git@github.com:$2/$1.git
-  git fetch upstream
-  git config user.name "Rouzbeh Delavari"
-  git config user.email "rouzwawi@gmail.com"
+# kubectl
+alias kb='kubectl'
+
+export GPG_TTY=$(tty)
+
+function burk {
+  host=$(burklee | fzf)
+  [[ ! -z "$host" ]] && ssh -A "$host.spotify.net"
 }
 
-function gheclone {
-  git clone git@ghe.spotify.net:rouz/$1.git
-  cd $1
-  git remote add upstream git@ghe.spotify.net:$2/$1.git
-  git fetch upstream
-}
-
-# Add ssh keys to agent
-ssh-add -A
 
 # fun
 alias skont='say shoun; sleep 0.7; say ttte'
 alias smejka='say vill doo smayca litee\?'
 
 
-alias wat='head -30 ~/var/me.todo; echo'
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
 # The next line updates PATH for the Google Cloud SDK.
-source '/Users/rouz/google-cloud-sdk/path.zsh.inc'
+if [ -f '/Users/rouz/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/rouz/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-source '/Users/rouz/google-cloud-sdk/completion.zsh.inc'
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+if [ -f '/Users/rouz/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/rouz/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
