@@ -94,7 +94,7 @@ function burk {
 
 # fun
 alias skont='say shoun; sleep 0.7; say ttte'
-alias smejka='say vill doo smayca leeteh\?'
+alias smejka='say vill doo smayca leeteh surtnoose\?'
 
 alias wat='less ~/var/me.todo'
 
