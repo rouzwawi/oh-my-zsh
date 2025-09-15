@@ -43,7 +43,7 @@ export PATH=~/bin:$PATH:/usr/local/opt/python/libexec/bin:/usr/local/bin:/usr/bi
 function swjava {
   export JAVA_HOME=`/usr/libexec/java_home -v $1`
 }
-swjava 11
+swjava 17
 
 export RUST_SRC_PATH=/usr/local/src/rust/src
 export RUST_HOME=/Users/rouz/.cargo/bin
@@ -92,6 +92,10 @@ function burk {
   [[ ! -z "$host" ]] && ssh -A "$host.spotify.net"
 }
 
+function look() {
+  dig srv +short _spotify-$1._grpc.services.gew1.spotify.net | tail -1 | awk '{print $NF}'
+}
+
 # fun
 alias skont='say shoun; sleep 0.7; say ttte'
 alias smejka='say vill doo smayca leeteh surtnoose\?'
@@ -105,3 +109,17 @@ if [ -f '/Users/rouz/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/rouz/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/rouz/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv virtualenv-init -)"
+
+export PATH="$HOME/.local/bin:$PATH"
